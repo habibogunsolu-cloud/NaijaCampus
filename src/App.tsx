@@ -17,6 +17,7 @@ import { CountdownWidget } from './components/CountdownWidget';
 import { ShareModal } from './components/ShareModal';
 import { InstallAppModal } from './components/InstallAppModal';
 import { usePWAInstall } from './hooks/usePWAInstall';
+import { safeOpenLink } from './utils/safeOpen';
 import { auth, onAuthStateChanged, User } from './firebase';
 import {
   GraduationCap,
@@ -107,7 +108,7 @@ export default function App() {
 
   const handleTriggerDirectAd = () => {
     if (monetagLink) {
-      window.open(monetagLink, '_blank', 'noopener,noreferrer');
+      safeOpenLink(monetagLink);
       handleRecordAdTrigger();
     }
   };

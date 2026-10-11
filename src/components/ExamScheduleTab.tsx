@@ -17,6 +17,7 @@ import {
   Filter,
 } from 'lucide-react';
 import { CountdownWidget } from './CountdownWidget';
+import { safeOpenLink } from '../utils/safeOpen';
 
 interface ExamScheduleTabProps {
   monetagLink: string;
@@ -48,7 +49,7 @@ export const ExamScheduleTab: React.FC<ExamScheduleTabProps> = ({
 
   const handleDownloadSyllabus = () => {
     if (monetagLink) {
-      window.open(monetagLink, '_blank', 'noopener,noreferrer');
+      safeOpenLink(monetagLink);
       onAdTriggered();
     }
   };

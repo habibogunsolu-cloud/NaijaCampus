@@ -26,6 +26,7 @@ import {
 } from 'lucide-react';
 import { ShareModal } from './ShareModal';
 import { copyTextToClipboard, buildSchoolCutOffShareMessage } from '../utils/shareUtils';
+import { safeOpenLink } from '../utils/safeOpen';
 
 interface UniversityCutOffsProps {
   userScore: number;
@@ -106,7 +107,7 @@ export const UniversityCutOffs: React.FC<UniversityCutOffsProps> = ({
   const handleOpenAdPortal = (e?: React.MouseEvent) => {
     if (e) e.stopPropagation();
     if (monetagLink) {
-      window.open(monetagLink, '_blank', 'noopener,noreferrer');
+      safeOpenLink(monetagLink);
       onAdTriggered();
     }
   };

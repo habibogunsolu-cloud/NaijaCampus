@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Calculator, Award, Sparkles, ExternalLink } from 'lucide-react';
+import { safeOpenLink } from '../utils/safeOpen';
 
 interface AggregateCalculatorProps {
   monetagLink: string;
@@ -45,7 +46,7 @@ export const AggregateCalculator: React.FC<AggregateCalculatorProps> = ({
 
   const handleTriggerAd = () => {
     if (monetagLink) {
-      window.open(monetagLink, '_blank', 'noopener,noreferrer');
+      safeOpenLink(monetagLink);
       onAdTriggered();
     }
   };
